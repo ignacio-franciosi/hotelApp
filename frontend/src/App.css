@@ -1,0 +1,170 @@
+/*ESTILOS DEL HOME*/
+#h1Home {
+  text-Align: center;
+  color: #000000;
+  font-family: Georgia, serif;
+  position: absolute;
+  top: 17%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+html, body {
+  background-color: #d7b6a2;
+}
+
+#formLogin, #formRegister {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  display: grid;
+  align-Items: center;
+  background-color: #424242;
+  padding: 2rem;
+  border-radius: 40px;
+  width: 30%;
+  box-shadow: 5px 5px 5px 5px rgb(104, 101, 101);
+}
+
+/*ESTILOS DEL LOGIN y Estilos del register*/
+#h1Login, #h1Register {
+  font-family: Georgia, serif;
+  text-Align: center;
+  color: #2a443b;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#inputImage,
+#inputHotelName, #inputDescription, #inputRooms, #inputStars, #inputPrice, #inputAmenities,
+#inputEmailLogin, #inputPasswordLogin, #inputNameRegister, #inputLastNameRegister, #inputDniRegister,
+#inputEmailRegister, #inputPasswordRegister {
+  margin-Bottom: 10px;
+  padding: 15px;
+  background-color: #424242;
+  border: 1px solid;
+  border-radius: 15px;
+  font-size: 15px;
+}
+
+#botonLogin {
+  background-Color: #007f7f;
+  color: #ffffff;
+  padding: 8px 16px;
+  text-shadow: 1px 1px 2px black;
+}
+
+
+/*estilos del search*/
+.hotelContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.hotelCard {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px;
+  width: 300px;
+  text-align: center;
+  background-color: #f9f9f9;
+  min-height: 25em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hotelCard h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #0E8388;
+}
+
+
+
+.hotelCard p {
+  margin-bottom: 5px;
+  color: #666;
+}
+
+.hotelCard button {
+  background-color: #007f7f;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.hotelCard button:hover {
+  background-color: #005f5f;
+}
+
+#backHotelSearch {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+  margin-top: 10%;
+}
+
+
+
+
+#noHotels {
+  text-align: center;
+  align-content: center;
+}
+
+
+
+/* Estilos HotelDetails */
+#backHotelDetails {
+  align-items: center;
+  min-height: 100vh;
+  display: grid;
+  justify-content: center;
+}
+
+
+
+.h1HotelDetails {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+
+
+.paragraphDetails {
+  text-align: left;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+
+.buttonDetails {
+  background-color: #007f7f;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.buttonDetails:hover {
+  background-color: #005f5f;
+}
+
+.errorMessage {
+  color: red;
+}

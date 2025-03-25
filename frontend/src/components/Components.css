@@ -1,0 +1,228 @@
+/* nav */
+.externDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 50;
+    background-color: rgb(125, 115, 115);
+    color: #ffffff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logoDiv {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    h1 {
+        color: white;
+    }
+}
+
+.menuButton, .menuButton:hover {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+
+}
+
+
+.linksDiv {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: flex-end;
+    font-weight: normal;
+    transition: max-height 0.3s ease-in-out;
+    overflow: hidden;
+    max-height: 0;
+}
+
+.linksDiv.open {
+    max-height: 200px; /* Ajustar según sea necesario */
+}
+
+.listDiv {
+    color: white;
+}
+
+.listStyles {
+    display: flex;
+    gap: 8px;
+    font-size: 18px;
+    flex-direction: column;
+}
+
+.listStyles li {
+    color: white;
+    margin-left: 10%;
+}
+
+#loginButton, #backButton {
+    background-color: rgba(83, 91, 242, 0);
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .linksDiv {
+        flex-direction: row;
+        max-height: none;
+    }
+
+    .listStyles {
+        flex-direction: row;
+    }
+
+    .menuButton {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .menuButton {
+        display: block;
+    }
+
+    .linksDiv {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .listStyles {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .listStyles li {
+        margin: 10px 0;
+
+    }
+
+    #loginButton, #backButton {
+        margin: 10px 0;
+    }
+}
+
+#footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #7d7373;
+    text-Align: center;
+    color: #ffffff;
+    font-size: 70%;
+    /* display: none; */
+    padding: 10px 0;
+    z-index: 1000;
+
+}
+
+.scrolled #footer {
+    display: block;
+    position: fixed;
+}
+
+#loginButton, #backButton, #hotelButton, #adminButton,
+#backButton{
+    position: absolute;
+
+    color: #ffffff;
+    background-color: rgba(83, 91, 242, 0);
+}
+#loginButton{
+    right: 2%;
+    top: 4%;
+}
+#backButton{
+    left: 2%;
+    top: 4%;
+}
+#hotelButton{
+    left: 5%;
+    top: 4%;
+}
+#adminButton{
+    left: 10%;
+    top: 4%;
+}
+
+p{
+    text-align: center;
+}
+#body{
+    align-Items: center;
+    background-Color: transparent !important;
+    min-Height: 100vh
+}
+/* modal */
+.modal, .modal2 {
+    display: block; /* Ocultar el modal por defecto */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    justify-content: center;
+    align-items: center;
+
+}
+
+.modal-content, .modal-content2 {
+    background-color: #fff;
+    color: #1a1a1a;
+    padding: 20px;
+    margin-top: 20%;
+    width: 20%;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    align-items: center;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    display: grid
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transform: translate(50%, -50%)
+}
+
+.close:hover,
+.close:focus {
+    color: #666;
+    text-decoration: none;
+    cursor: pointer;
+
+}
+
+/* Estilos para botón Cerrar */
+.buttonModal {
+    background-Color: #2b2a33;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: black;
+
+}

@@ -39,3 +39,16 @@ func DeleteHotel(hotel model.Hotel) error {
 	}
 	return err
 }
+
+func GetHoteles() []model.Hotel {
+	var hoteles []model.Hotel
+
+	result := Db.Find(&hoteles)
+	if result.Error != nil {
+		log.Error("Error retrieving hotels: ", result.Error)
+		return nil
+	}
+
+	log.Debug("Hoteles found: ", len(hoteles))
+	return hoteles
+}

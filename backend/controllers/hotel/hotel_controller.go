@@ -62,3 +62,13 @@ func DeleteHotel(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"message": "Hotel deleted"})
 }
+
+func GetHoteles(c *gin.Context) {
+	hoteles, err := service.HotelService.GetHoteles()
+
+	if err != nil {
+		c.JSON(err.Status(), err)
+		return
+	}
+	c.JSON(http.StatusOK, hoteles)
+}
