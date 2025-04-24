@@ -4,12 +4,13 @@ import (
 	hotelClient "backend/clients/hotel"
 	userClient "backend/clients/user"
 	model2 "backend/model"
+	"os"
 
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/joho/godotenv"
 	log "github.com/sirupsen/logrus"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
-	"gorm.io/gorm/logger"
 )
 
 var (
@@ -18,21 +19,17 @@ var (
 )
 
 func init() {
-	// DB Connections Paramters
-	DBName := "ingsw3" //sacar a un config
-	DBUser := "root"
-	//DBPass := "root"
-	DBPass := ""
-	//DBPass := os.Getenv("MVC_DB_PASS")
+	// Cargamos las variables de entorno desde el archivo .env
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatalf("Error loading .env file: %v", err)
+	}
 
-	//DBHost := "arqsw2-db"
-	DBHost := "localhost"
-	// ------------------------
+	// Obtenemos la cadena de conexión de la variable de entorno
+	dbConnString := os.Getenv("DBCONNSTRING")
 
-	db, err = gorm.Open(mysql.Open(DBUser+":"+DBPass+"@tcp("+DBHost+":3306)/"+DBName+"?charset=utf8&parseTime=True"),
-		&gorm.Config{
-			Logger: logger.Default.LogMode(logger.Info),
-		})
+	// Abrimos la conexión a la base de datos utilizando la variable
+	db, err = gorm.Open(mysql.Open(dbConnString), &gorm.Config{})
 
 	if err != nil {
 		log.Info("Connection Failed to Open")
@@ -41,7 +38,7 @@ func init() {
 		log.Info("Connection Established")
 	}
 
-	// We need to add all CLients that we build
+	// Add all clients here
 	userClient.Db = db
 	hotelClient.Db = db
 }
