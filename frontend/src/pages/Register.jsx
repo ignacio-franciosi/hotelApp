@@ -1,46 +1,17 @@
-
-import React, {useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './../App.css';
-import CustomModal from '../components/CustomModal.jsx';
 
 const Register = () => {
     const navigate = useNavigate();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    let [emptyRegister] = useState(false);
-
-    const register1 = () => {
-        navigate('/login');
-    };
-
-    const [showAlert1, setShowAlert1] = useState(false);
-    const [showAlert2, setShowAlert2] = useState(false);
-    const [showAlert3, setShowAlert3] = useState(false);
-    const openAlert1 = () => {
-        setShowAlert1(true);
-    };
-    const closeAlert1 = () => {
-        setShowAlert1(false);
-    };
-
-    const openAlert2 = () => {
-        setShowAlert1(true);
-    };
-    const closeAlert2 = () => {
-        setShowAlert1(false);
-    };
-
-    const openAlert3 = () => {
-        setShowAlert3(true);
-    };
-    const closeAlert3 = () => {
-        setShowAlert3(false);
-    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        let emptyRegister = false;
+
         if (name === '') {
             document.getElementById('inputNameRegister').style.borderColor = 'red';
             emptyRegister = true;
@@ -59,53 +30,39 @@ const Register = () => {
         } else {
             document.getElementById('inputPasswordRegister').style.borderColor = '';
         }
-        if (!emptyRegister) {
-            try {
-                const response = await fetch('http://localhost:8080/register', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        name: name,
-                        email: email,
-                        password: password,
 
-                    }),
-                });
-                if (response.ok) {
-                    openAlert2()
-                    navigate('/login');
-                } else {
-                    openAlert3()
-                    console.log('el usuario ya existe');
-                }
-            } catch (error) {
-                console.log('Error al realizar la solicitud al backend:', error);
+        if (emptyRegister) {
+            alert("Debes completar todos los campos");
+            return;
+        }
+
+        try {
+            const response = await fetch('http://localhost:8080/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    password: password,
+                }),
+            });
+
+            if (response.ok) {
+                alert("Gracias por registrarte! ahora puedes iniciar sesión :)");
+                navigate('/login');
+            } else {
+                alert("El correo electrónico ya está registrado");
+                console.log('El usuario ya existe');
             }
-        } else {
-           openAlert1()
-            emptyRegister = true;
+        } catch (error) {
+            console.log('Error al realizar la solicitud al backend:', error);
         }
     };
 
     return (
         <div id="body">
-            <CustomModal
-                showModal={showAlert1}
-                closeModal={closeAlert1}
-                content="Debes completar todos los campos"
-            />
-            <CustomModal
-                showModal={showAlert2}
-                closeModal={closeAlert2}
-                content="Gracias por registrarte! ahora puedes iniciar sesión :)"
-            />
-            <CustomModal
-                showModal={showAlert3}
-                closeModal={closeAlert3}
-                content="El correo electronico ya está registrado"
-            />
             <h1 id="h1Register">Registrarse</h1>
             <form id="formRegister" onSubmit={handleSubmit}>
                 <input

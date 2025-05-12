@@ -11,8 +11,8 @@ func mapUrls() {
 	// Users Mapping (listo)
 	router.GET("/user/:id", userController.GetUserById)
 	router.POST("/register", userController.InsertUser)
-	router.POST("/login", userController.UserLogin)
-	router.GET("/login", userController.UserLogin)
+	router.POST("/login", userController.LoginUser)
+	router.GET("/login", userController.LoginUser)
 	router.GET("/user/email/:email", userController.GetUserByEmail)
 
 	//Hotel Mapping (listo)

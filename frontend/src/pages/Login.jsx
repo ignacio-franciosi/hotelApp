@@ -1,130 +1,94 @@
-
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Cookies from 'js-cookie';
-import CustomModal from '../components/CustomModal.jsx';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './../App.css';
 
-// Parte funcional
 const Login = () => {
-    const navigate = useNavigate(); // Permite la navegación entre páginas con las rutas
-    const [email, setEmail] = useState(''); // Se inicializan las variables vacías
+    const navigate = useNavigate();
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const register = () => { // funbcion que te redirige a  register
+    let emptyRegister = false;
+
+    const register = () => {
         navigate("/register");
     };
-    let [emptyRegister] = useState(false);
-    const [showAlert1, setShowAlert1] = useState(false);
-    const [showAlert2, setShowAlert2] = useState(false);
-
-    const openAlert1 = () => {
-        setShowAlert1(true);
-    };
-    const closeAlert1 = () => {
-        setShowAlert1(false);
-    };
-    const openAlert2 = () => {
-        setShowAlert2(true);
-    };
-    const closeAlert2 = () => {
-        setShowAlert2(false);
-    };
-
-
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Para que no recargue la página
+        e.preventDefault();
+        emptyRegister = false;
+
         if (email === '') {
             document.getElementById('inputEmailLogin').style.borderColor = 'red';
             emptyRegister = true;
         } else {
             document.getElementById('inputEmailLogin').style.borderColor = '';
         }
+
         if (password === '') {
             document.getElementById('inputPasswordLogin').style.borderColor = 'red';
             emptyRegister = true;
         } else {
-            document.getElementById('inputEmailLogin').style.borderColor = '';
+            document.getElementById('inputPasswordLogin').style.borderColor = '';
         }
-        if (!emptyRegister) {
 
+        if (!emptyRegister) {
             try {
-                // Envía la respuesta al backend (Postman, básicamente)
                 const response = await fetch('http://localhost:8080/login', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({email, password}),
-                }).then((response) => {
-                    console.log(response.status)
-                    if (response.ok) {
-                        console.log("hizo el return")
-                        return response.json();
-                    } else {
-                        openAlert1();
-                        console.log("hizo el error")
-                    }
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password }),
                 });
-                if (response.id_user) {
-                    // Si el usuario existe
-                    // El usuario está en la base de datos
-                    console.log('Usuario válido');
 
-                    Cookies.set('user_id', response.id_user)
-                    Cookies.set('email', email)
-                    Cookies.set('token', response.token)
-                    Cookies.set('type', response.tipo)
-                    navigate('/home');
-                    window.location.reload();
+                if (response.ok) {
+                    const data = await response.json();
+
+                    if (data.id_user) {
+                        Cookies.set('user_id', data.id_user);
+                        Cookies.set('email', email);
+                        Cookies.set('token', data.token);
+                        Cookies.set('type', data.tipo);
+                        navigate('/home');
+                        window.location.reload(); 
+                    }
+                } else {
+                    alert("Usuario no registrado");
                 }
             } catch (error) {
-                Cookies.set('user_id', "-1")
-
                 console.log('Error al realizar la solicitud al backend:', error);
+                Cookies.set('user_id', "-1");
             }
         } else {
-            openAlert2()
-            emptyRegister = true;
+            alert("Debes completar todos los campos");
         }
-
     };
 
-    // Parte visible
     return (
         <div id="body">
-            <CustomModal
-                showModal={showAlert2}
-                closeModal={closeAlert2}
-                content="Debes completar todos los campos"
-            />
-            <CustomModal
-                showModal={showAlert1}
-                closeModal={closeAlert1}
-                content="Usuario no registrado"
-            />
             <h1 id="h1Login">Iniciar sesión</h1>
             <form id="formLogin" onSubmit={handleSubmit}>
                 <input
-                    id={'inputEmailLogin'}
+                    id="inputEmailLogin"
                     type="email"
                     placeholder="Correo electrónico"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
                 <input
-                    id={'inputPasswordLogin'}
+                    id="inputPasswordLogin"
                     type="password"
                     placeholder="Contraseña"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-
                 <button id="botonLogin" type="submit">Iniciar sesión</button>
-                <br/>
-                <button id="botonLogin" onClick={register}>Registrarse</button>
+                <br />
+                <button id="botonLogin" type="button" onClick={register}>Registrarse</button>
             </form>
         </div>
     );
 };
+
 export default Login;
+
+
+

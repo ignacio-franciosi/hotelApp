@@ -44,7 +44,25 @@ func (s *hotelService) InsertHotel(hotelDto dto.HotelDto) (dto.HotelDto, e.ApiEr
 }
 
 func (s *hotelService) GetHoteles() ([]dto.HotelDto, e.ApiError) {
-	hoteles := hotelClient.GetHoteles() // Llamada al cliente para obtener todos los hoteles
+	hoteles, err := hotelClient.GetHoteles()
+
+	if err != nil {
+		return nil, e.NewApiError(
+			"Error al recuperar hoteles",
+			err.Error(),
+			500,
+			nil,
+		)
+	}
+
+	if len(hoteles) == 0 {
+		return nil, e.NewApiError(
+			"No hay hoteles disponibles",
+			"",
+			404,
+			nil,
+		)
+	}
 
 	var hotelesDto []dto.HotelDto
 	for _, hotel := range hoteles {

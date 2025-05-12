@@ -9,14 +9,24 @@ import (
 	"gorm.io/gorm"
 )
 
+type userClient struct{}
+
+type userClientInterface interface {
+	GetUserById(id int) model.User
+	InsertUser(user model.User) model.User
+	GetUserByEmail(email string) model.User
+}
+
 var Db *gorm.DB
 var cache *ccache.Cache[model.User]
+var UserClient userClientInterface
 
 func init() {
+	UserClient = userClient{}
 	cache = ccache.New(ccache.Configure[model.User]())
 }
 
-func GetUserById(id int) model.User {
+func (c userClient) GetUserById(id int) model.User {
 	var user model.User
 
 	Db.Where("id_user = ?", id).First(&user)
@@ -25,7 +35,7 @@ func GetUserById(id int) model.User {
 	return user
 }
 
-func GetUserByEmail(email string) model.User {
+func (c userClient) GetUserByEmail(email string) model.User {
 	//intento agarrar del cache con un get y la clave (email)
 	item := cache.Get(email)
 	if item != nil {
@@ -48,7 +58,7 @@ func GetUserByEmail(email string) model.User {
 	return user
 }
 
-func InsertUser(user model.User) model.User {
+func (c userClient) InsertUser(user model.User) model.User {
 
 	result := Db.Create(&user)
 

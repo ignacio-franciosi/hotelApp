@@ -40,40 +40,46 @@ func GetUserById(c *gin.Context) {
 
 //login
 
-func UserLogin(c *gin.Context) {
+func LoginUser(c *gin.Context) {
 	var loginDto dto2.LoginDto
 	err := c.BindJSON(&loginDto)
 
+	// Error parsing JSON
 	if err != nil {
-		log.Error(err.Error())
-		c.JSON(http.StatusBadRequest, err.Error())
+		log.Error("Invalid request data: ", err)
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid request data"})
 		return
 	}
+
 	tokenDto, er := service.UserService.LoginUser(loginDto)
 
+	// Error with invalid credentials
 	if er != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": err.Error()})
+		log.Error("Invalid credentials: ", er)
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid credentials"})
 		return
 	}
-	c.JSON(http.StatusOK, tokenDto)
 
+	c.JSON(http.StatusOK, tokenDto)
 }
 
 func InsertUser(c *gin.Context) {
 	var userDto dto2.UserDto
 	err := c.BindJSON(&userDto)
 
-	// Error Parsing json param
+	// Error parsing JSON
 	if err != nil {
-		log.Error(err.Error())
-		c.JSON(http.StatusBadRequest, err.Error())
+		log.Error("Invalid request data: ", err)
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid request data"})
 		return
 	}
 
 	tokenDto, er := service.UserService.InsertUser(userDto)
-	// Error del Insert
+
+	// Error inserting user
 	if er != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": err.Error()})
+		log.Error("Error inserting user: ", er)
+		c.JSON(http.StatusBadRequest, gin.H{"error": er.Error()})
 		return
 	}
 
