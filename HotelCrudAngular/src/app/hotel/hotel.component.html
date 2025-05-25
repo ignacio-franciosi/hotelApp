@@ -1,0 +1,51 @@
+<header>
+    <img src="assets/images/logo-placeholder.png" alt="Logo">
+    <h1>Hotel App</h1>
+</header>
+
+<div class="container">
+    <div class="search-bar">
+        <p class="h5">Hotels</p>
+        <button type="button" class="btn" (click)="addHotel()">Add New Hotel</button>
+    </div>
+
+    <table class="table">
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Price</td>
+            <td>Rooms</td>
+            <td>City</td>
+            <td>Edit</td>
+            <td>Delete</td>
+        </tr>
+        <tr *ngFor="let hotel of hotels | async; let odd=odd;" [class.rowGrayBg]="odd">
+            <td>{{hotel.id}}</td>
+            <td>{{hotel.name}}</td>
+            <td>{{hotel.price}}</td>
+            <td>{{hotel.rooms}}</td>
+            <td>{{hotel.city}}</td>
+            <td>
+                <span class="icon-btn" (click)="editHotel(hotel.id)">✏️</span>
+            </td>
+            <td>
+                <span class="icon-btn" (click)="deleteHotel(hotel.id)">🗑️</span>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Cards -->
+</div>
+<div class="card-grid">
+    <div class="hotel-card" *ngFor="let hotel of hotels | async">
+        <img src="assets/images/hotel-icon.png" alt="Hotel Icon">
+        <h3>{{hotel.name}}</h3>            
+        <p>City: {{hotel.city}}</p>
+        <p>Rooms: {{hotel.rooms}}</p>  
+        <p>Price: ${{hotel.price}}</p>
+    </div>
+</div>
+
+<footer>
+    &copy; 2025 Hotel Management System. All rights reserved.
+</footer>

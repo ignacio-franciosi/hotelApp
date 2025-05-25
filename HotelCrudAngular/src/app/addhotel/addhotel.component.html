@@ -1,0 +1,50 @@
+<header>
+    <img src="assets/images/logo-placeholder.png" alt="Logo">
+    <h1>Hotel App</h1>
+</header>
+<p class="h5 m-2">Create new hotel:</p>
+<div class="m-2">
+  <form novalidate (ngSubmit)="addHotel(newHotel)">
+    <div class="form-group" style="max-width: 300px;">
+      <label>Name</label>
+      <input
+        class="form-control"
+        name="name"
+        [(ngModel)]="newHotel.name"
+      />
+    </div>
+    <div class="form-group" style="max-width: 300px;">
+      <label>Price</label>
+      <input
+        type="number"
+        class="form-control"
+        name="price"
+        [(ngModel)]="newHotel.price"
+      />
+    </div>
+    <div class="form-group" style="max-width: 300px;">
+      <label>Rooms</label>
+      <input
+        type="number"
+        class="form-control"
+        name="rooms"
+        [(ngModel)]="newHotel.rooms"
+      />
+    </div>
+    <div class="form-group" style="max-width: 300px;">
+      <label>City</label>
+      <input
+        class="form-control"
+        name="city"
+        [(ngModel)]="newHotel.city"
+      />
+    </div>
+    <button class="btn btn-primary" type="submit" style="width: 70px;">
+      {{ submitBtnText }}
+      <img src="assets/images/loading.gif" [style.display]="imgLoadingDisplay" />
+    </button>
+  </form>
+</div>
+<footer>
+    &copy; 2025 Hotel Management System. All rights reserved.
+</footer>

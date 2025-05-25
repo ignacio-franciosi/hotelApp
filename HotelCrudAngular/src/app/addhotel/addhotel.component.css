@@ -1,0 +1,92 @@
+header {
+    background-color: #1b4332;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+}
+
+header img {
+    height: 120px;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+/* Título del formulario */
+p.h5 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #2f3e46;
+}
+
+/* Contenedor del formulario */
+.form-container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 350px;
+    margin: 1rem auto;
+}
+
+/* Grupo de campos */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+/* Etiquetas */
+.form-group label {
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+    color: #1b4332;
+}
+
+/* Inputs */
+.form-group input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+/* Botón de submit */
+form button.btn {
+    background-color: #2d6a4f;
+    color: white;
+    font-weight: 600;
+    padding: 0.6rem 1.2rem; /* más padding para agrandar */
+    font-size: 1rem;         /* fuente más grande */
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 100px;        /* ancho mínimo mayor */
+    margin-bottom: 120px;
+}
+
+form button.btn:hover {
+    background-color: #40916c;
+}
+
+
+/* Imagen de carga (loading.gif) */
+form button img {
+    height: 20px;
+}
+
+footer {
+    background-color: #1b4332;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    margin-top: auto;
+}
