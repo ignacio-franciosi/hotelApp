@@ -169,7 +169,7 @@ public async Task AddHotel_RoomsQuantityIsLowerThanOne_ReturnsBadRequest()
     // Assert
     Assert.IsType<BadRequestObjectResult>(result);
     var badRequestResult = result as BadRequestObjectResult;
-    Assert.Equal("La cantidad de habitaciones debe ser mayor a 0.", badRequestResult.Value);
+    Assert.Equal("El hotel debe tener un valor de habitaciones", badRequestResult.Value);
 }
 
 [Fact]
@@ -203,7 +203,7 @@ public async Task AddHotel_CityContainsNumbers_ReturnsBadRequest()
     // Assert
     Assert.IsType<BadRequestObjectResult>(result);
     var badRequestResult = result as BadRequestObjectResult;
-    Assert.Equal("El nombre no puede contener números.", badRequestResult.Value);
+    Assert.Equal("El nombre de ciudad no puede contener números.", badRequestResult.Value);
 }
 
 [Fact]
@@ -220,7 +220,7 @@ public async Task AddHotel_PriceIsLowerThanOne_ReturnsBadRequest()
     // Assert
     Assert.IsType<BadRequestObjectResult>(result);
     var badRequestResult = result as BadRequestObjectResult;
-    Assert.Equal("El precio de cada habitacion debe ser mayor a 0.", badRequestResult.Value);
+    Assert.Equal("El precio por habitacion debe ser mayor a 0", badRequestResult.Value);
 }
 
 }
