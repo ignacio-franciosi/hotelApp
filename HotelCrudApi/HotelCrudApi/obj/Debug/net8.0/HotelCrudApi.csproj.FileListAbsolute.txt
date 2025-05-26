@@ -134,3 +134,4 @@ C:\Users\admin\Desktop\IngSw3 FINAL\hotelApp\HotelCrudApi\HotelCrudApi\obj\Debug
 C:\Users\admin\Desktop\IngSw3 FINAL\hotelApp\HotelCrudApi\HotelCrudApi\obj\Debug\net8.0\HotelCrudApi.pdb
 C:\Users\admin\Desktop\IngSw3 FINAL\hotelApp\HotelCrudApi\HotelCrudApi\obj\Debug\net8.0\HotelCrudApi.genruntimeconfig.cache
 C:\Users\admin\Desktop\IngSw3 FINAL\hotelApp\HotelCrudApi\HotelCrudApi\obj\Debug\net8.0\ref\HotelCrudApi.dll
+C:\Users\admin\Desktop\IngSw3 FINAL\hotelApp\HotelCrudApi\HotelCrudApi\obj\Debug\net8.0\HotelCrudApi.sourcelink.json
