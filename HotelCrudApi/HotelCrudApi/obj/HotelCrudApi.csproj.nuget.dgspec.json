@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\admin\\Desktop\\IngSw3 FINAL\\hotelApp\\hotelcrudapi\\hotelcrudapi\\HotelCrudApi.csproj": {}
+    "C:\\Users\\admin\\Desktop\\IngSw3 FINAL\\hotelApp\\HotelCrudApi\\HotelCrudApi\\HotelCrudApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\admin\\Desktop\\IngSw3 FINAL\\hotelApp\\hotelcrudapi\\hotelcrudapi\\HotelCrudApi.csproj": {
+    "C:\\Users\\admin\\Desktop\\IngSw3 FINAL\\hotelApp\\HotelCrudApi\\HotelCrudApi\\HotelCrudApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\admin\\Desktop\\IngSw3 FINAL\\hotelApp\\hotelcrudapi\\hotelcrudapi\\HotelCrudApi.csproj",
+        "projectUniqueName": "C:\\Users\\admin\\Desktop\\IngSw3 FINAL\\hotelApp\\HotelCrudApi\\HotelCrudApi\\HotelCrudApi.csproj",
         "projectName": "HotelCrudApi",
-        "projectPath": "C:\\Users\\admin\\Desktop\\IngSw3 FINAL\\hotelApp\\hotelcrudapi\\hotelcrudapi\\HotelCrudApi.csproj",
+        "projectPath": "C:\\Users\\admin\\Desktop\\IngSw3 FINAL\\hotelApp\\HotelCrudApi\\HotelCrudApi\\HotelCrudApi.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\admin\\Desktop\\IngSw3 FINAL\\hotelApp\\hotelcrudapi\\hotelcrudapi\\obj\\",
+        "outputPath": "C:\\Users\\admin\\Desktop\\IngSw3 FINAL\\hotelApp\\HotelCrudApi\\HotelCrudApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -150,3 +150,4 @@ C:\Users\admin\Desktop\IngSw3 FINAL\hotelApp\hotelcrudapi.tests\obj\Debug\net8.0
 C:\Users\admin\Desktop\IngSw3 FINAL\hotelApp\hotelcrudapi.tests\obj\Debug\net8.0\HotelCrudApi.Tests.pdb
 C:\Users\admin\Desktop\IngSw3 FINAL\hotelApp\hotelcrudapi.tests\obj\Debug\net8.0\HotelCrudApi.Tests.genruntimeconfig.cache
 C:\Users\admin\Desktop\IngSw3 FINAL\hotelApp\hotelcrudapi.tests\obj\Debug\net8.0\ref\HotelCrudApi.Tests.dll
+C:\Users\admin\Desktop\IngSw3 FINAL\hotelApp\hotelcrudapi.tests\obj\Debug\net8.0\HotelCrudApi.Tests.sourcelink.json
