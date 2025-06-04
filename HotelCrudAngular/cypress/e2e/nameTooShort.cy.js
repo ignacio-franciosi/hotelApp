@@ -1,7 +1,7 @@
-describe('AddHotel - Validación de numero de habitaciones mayor a 0', () => {
+describe('AddHotel - Validación de nombre de hotel demasiado corto', () => {
     Cypress.on('uncaught:exception', () => false);
     let baseUrl;
-    const testHotelName = 'Hotel Cypress Test Add Hotel with 0 rooms';
+    const testHotelName = 'Hotel Cypress Test Add Hotel with name too short';
 
     beforeEach(() => {
         baseUrl = Cypress.env('baseUrl') || 'http://localhost:4200/';
@@ -9,13 +9,13 @@ describe('AddHotel - Validación de numero de habitaciones mayor a 0', () => {
         cy.wait(500);
     });
 
-  it('debería mostrar un toast de error cuando el numero de habitaciones es 0', () => {
+  it('debería mostrar un toast de error cuando el nombre de hotel es demasiado corto', () => {
     cy.wait(1000);
     cy.contains('Add New Hotel').click();
     // Completa campos válidos
-    cy.get('input[name="name"]').type('Hotel Cypress');
-    cy.get('input[name="price"]').type('150');
-    cy.get('input[name="rooms"]').type('0');  // rooms = 0
+    cy.get('input[name="name"]').type('H');
+    cy.get('input[name="price"]').type('20'); //precio = 0
+    cy.get('input[name="rooms"]').type('20');  
     cy.get('input[name="city"]').type('Ciudad');
 
     // Enviar formulario
@@ -23,7 +23,7 @@ describe('AddHotel - Validación de numero de habitaciones mayor a 0', () => {
 
     // Esperar y verificar el toast
     cy.get('.toast-message')
-      .should('contain', 'El número de habitaciones es obligatorio.')
+      .should('contain', 'El nombre del hotel debe tener al menos 2 caracteres.')
       .and('be.visible');
   });
 });

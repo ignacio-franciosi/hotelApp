@@ -37,9 +37,7 @@ export class HotelComponent implements OnInit {
   }
 
   deleteHotel(id: number) {
-    this.hotelService
-      .deleteHotelById(id)
-      .subscribe((result) =>
+    this.hotelService.deleteHotelById(id).subscribe((result) =>
         this.getHotels().subscribe(
           (result) => (this.imgLoadingDisplay = 'none')
         )
