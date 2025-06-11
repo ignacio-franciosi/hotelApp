@@ -13,12 +13,12 @@ builder.Services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
            .AllowAnyHeader();
 }));
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+//var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-/*
+
 var connectionString = Environment.GetEnvironmentVariable("cnn-string-qa")
                       ?? builder.Configuration.GetConnectionString("DefaultConnection");
-*/
+
 if (string.IsNullOrEmpty(connectionString))
 {
     throw new InvalidOperationException("La variable de entorno no esta configurada!");
