@@ -370,18 +370,18 @@ stages:
           baseUrl: '$(frontContainerInstanceNameQA).brazilsouth.azurecontainer.io'
         steps:
         - script: |
-            cd $(Build.SourcesDirectory)/EmployeeCrudAngular
+            cd $(Build.SourcesDirectory)/HotelCrudAngular
             npm install typescript ts-node
           displayName: 'Install TypeScript'
 
         - script: |
-            cd $(Build.SourcesDirectory)/EmployeeCrudAngular
+            cd $(Build.SourcesDirectory)/HotelCrudAngular
             npx cypress run --config-file cypress.config.ts --env baseUrl=$(baseUrl)
           displayName: 'Run Cypress E2E Tests'
 
         - task: PublishTestResults@2
           inputs:
-            testResultsFiles: '$(Build.SourcesDirectory)/EmployeeCrudAngular/cypress/results/*.xml'
+            testResultsFiles: '$(Build.SourcesDirectory)/HotelCrudAngular/cypress/results/*.xml'
             testRunTitle: 'Cypress E2E Tests (QA)'
           displayName: 'Publish Cypress Test Results'
 
@@ -466,20 +466,20 @@ stages:
         steps:
           # Instalar TypeScript y ts-node
           - script: |
-              cd $(Build.SourcesDirectory)/EmployeeCrudAngular
+              cd $(Build.SourcesDirectory)/HotelCrudAngular
               npm install typescript ts-node
             displayName: 'Install TypeScript'
 
           # Ejecutar
           - script: |
-              cd $(Build.SourcesDirectory)/EmployeeCrudAngular
+              cd $(Build.SourcesDirectory)/HotelCrudAngular
               npx cypress run --config-file cypress.config.ts --env baseUrl=$(baseUrl)
             displayName: 'Run Cypress E2E Tests'
 
           # Publicar
           - task: PublishTestResults@2
             inputs:
-              testResultsFiles: '$(Build.SourcesDirectory)/EmployeeCrudAngular/cypress/results/*.xml'
+              testResultsFiles: '$(Build.SourcesDirectory)/HotelCrudAngular/cypress/results/*.xml'
               testRunTitle: 'Cypress E2E Tests (QA)'
             displayName: 'Publicar resultados de Cypress'
 
@@ -507,7 +507,7 @@ stages:
               inputs:
                 azureSubscription: '$(ConnectedServiceName)'
                 appType: 'webApp'
-                WebAppName: 'MiWebAppOberti-Prod'
+                WebAppName: 'hotelApp-prod'
                 package: '$(System.ArtifactsDirectory)/drop-back/*/.zip'
 
     - job: DeployFrontProd
@@ -524,7 +524,7 @@ stages:
         inputs:
           azureSubscription: '$(ConnectedServiceName)'
           appType: 'webApp'
-          WebAppName: 'MiWebAppOberti-prod'
+          WebAppName: 'hotelApp-prod'
           package: '$(System.ArtifactsDirectory)/angular-drop'
 
 ## Deploy Back y Front en PROD para ACI
