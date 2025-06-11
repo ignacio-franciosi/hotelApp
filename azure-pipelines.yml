@@ -12,7 +12,7 @@ variables:
   frontPath: './HotelCrudAngular'
   backPath: './HotelCrudApi'
   nodeVersion: '18.x'
-  ConnectedServiceName: 'Azure Subscription 1'
+  ConnectedServiceName: 'ServiceConnectionARM'
   acrLoginServer: 'hotelappacr.azurecr.io'
   backImageName: 'hotel-crud-api'
   frontImageName: 'hotel-crud-frontend'
