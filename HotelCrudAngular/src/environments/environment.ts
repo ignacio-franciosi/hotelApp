@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:7150/api/Hotel'  // URL de la API para desarrollo
-  //apiUrl: 'http://igfr-crud-api-qa.eastus.azurecontainer.io/api/employee'  // URL de la API para desarrollo
+  //apiUrl: 'http://localhost:7150/api/Hotel'  // URL de la API para desarrollo
+  apiUrl: 'https://hotel-back-qa.brazilsouth.azurecontainer.io/api/Hotel'  // URL de la API para desarrollo
 };
 
 
