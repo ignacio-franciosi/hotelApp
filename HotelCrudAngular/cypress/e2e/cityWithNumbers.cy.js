@@ -4,7 +4,12 @@ describe('AddHotel - Validación de campo ciudad con números', () => {
     const testHotelName = 'Hotel Cypress Test Add Hotel with City with Numbers';
 
     beforeEach(() => {
-        baseUrl = Cypress.env('baseUrl') || 'http://localhost:4200/';
+        baseUrl = Cypress.env('baseUrl');
+    
+        if (!baseUrl) {
+            baseUrl = 'http://localhost:4200/';
+        }
+
         cy.visit(baseUrl);
         cy.wait(500);
     });
