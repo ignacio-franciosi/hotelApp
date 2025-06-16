@@ -511,7 +511,7 @@ stages:
                 azureSubscription: '$(ConnectedServiceName)'
                 appType: 'webApp'
                 WebAppName: 'hotelApp-prod'
-                package: '$(System.ArtifactsDirectory)/drop-back/*/.zip'
+                package: '$(System.ArtifactsDirectory)/drop-back/**/*.zip'
 
     - job: DeployFrontProd
       displayName: 'Deploy Frontend to Production'
