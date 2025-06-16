@@ -4,7 +4,12 @@ describe('AddHotel - Validación de nombre de hotel demasiado corto', () => {
     const testHotelName = 'Hotel Cypress Test Add Hotel with name too short';
 
     beforeEach(() => {
-        baseUrl = Cypress.env('baseUrl') || 'http://localhost:4200/';
+        baseUrl = Cypress.env('baseUrl');
+    
+        if (!baseUrl) {
+            baseUrl = 'http://localhost:4200/';
+        }
+
         cy.visit(baseUrl);
         cy.wait(500);
     });
