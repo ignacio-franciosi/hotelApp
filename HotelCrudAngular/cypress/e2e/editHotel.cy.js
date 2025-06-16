@@ -8,7 +8,12 @@ describe('| Tests - Edit Hotel |', () => {
     const editedCity = 'Ciudad Editada';
 
     beforeEach(() => {
-        baseUrl = Cypress.env('baseUrl') || 'http://localhost:4200/';
+        baseUrl = Cypress.env('baseUrl');
+    
+        if (!baseUrl) {
+            baseUrl = 'http://localhost:4200/';
+        }
+
         cy.visit(baseUrl);
         cy.wait(500);
     });
