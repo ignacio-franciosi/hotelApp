@@ -331,7 +331,9 @@ stages:
                   --environment-variables ConnectionStrings__DefaultConnection="$(cnn_string_qa)" \
                   --restart-policy Always \
                   --cpu $(container-cpu-api-qa) \
+                  --os-type Windows \
                   --memory $(container-memory-api-qa)
+
 
           #------------------------------------------------------
           # DEPLOY DOCKER FRONT IMAGE A AZURE CONTAINER INSTANCES QA
@@ -350,6 +352,9 @@ stages:
                 echo "Image Name: $(frontImageName)"
                 echo "Image Tag: $(frontImageTag)"
                 echo "Api Url: $(API_URL)"
+
+                  # Habilitar admin en ACR
+                az acr update -n $(acrName) --admin-enabled true
                 
                 az container delete --resource-group $(ResourceGroupName) --name $(frontContainerInstanceNameQA) --yes
 
@@ -364,6 +369,7 @@ stages:
                   --environment-variables API_URL="$(API_URL)" \
                   --restart-policy Always \
                   --cpu $(container-cpu-front-qa) \
+                  --os-type Windows \
                   --memory $(container-memory-front-qa)
 
       - job: IntegrationTesting
