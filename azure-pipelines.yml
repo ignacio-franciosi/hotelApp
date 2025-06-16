@@ -267,7 +267,7 @@ stages:
         azureSubscription: 'Azure subscription 1'
         appType: 'webApp'
         WebAppName: 'hotelApp'
-        package: '$(System.ArtifactsDirectory)/drop-back/*/.zip'
+        package: '$(System.ArtifactsDirectory)/drop-back/**/*.zip'
 
   - job: DeployFront
     displayName: 'Deploy Frontend'
@@ -314,6 +314,9 @@ stages:
                 echo "Image Name: $(backImageName)"
                 echo "Image Tag: $(backImageTag)"
                 echo "Connection String: $(cnn_string_qa)"
+
+                 # Habilitar admin en ACR
+                az acr update -n $(acrName) --admin-enabled true
             
                 az container delete --resource-group $(ResourceGroupName) --name $(backContainerInstanceNameQA) --yes
   
