@@ -370,7 +370,8 @@ stages:
         displayName: 'Cypress'
         dependsOn: deploy_to_aci_qa
         variables:
-          baseUrl: '$(frontContainerInstanceNameQA).brazilsouth.azurecontainer.io'
+          baseUrl: 'https://$(frontContainerInstanceNameQA).brazilsouth.azurecontainer.io'
+          apiUrl: 'https://$(backContainerInstanceNameQA).brazilsouth.azurecontainer.io'
         steps:
         - script: |
             cd $(Build.SourcesDirectory)/HotelCrudAngular
@@ -379,7 +380,7 @@ stages:
 
         - script: |
             cd $(Build.SourcesDirectory)/HotelCrudAngular
-            npx cypress run --config-file cypress.config.ts --env baseUrl=$(baseUrl)
+            npx cypress run --config-file cypress.config.ts --env apiUrl=$(apiUrl),baseUrl=$(baseUrl)
           displayName: 'Run Cypress E2E Tests'
 
         - task: PublishTestResults@2
@@ -464,7 +465,8 @@ stages:
         displayName: 'Integration Tests'
         dependsOn: 'DeployImagesToAppServiceQA'
         variables:
-          baseUrl: '$(frontContainerInstanceNameQA).azurewebsites.net' 
+          baseUrl: 'https://$(WebAppFrontNameContainersQA).azurewebsites.net' 
+          apiUrl: 'https://$(WebAppApiNameContainersQA).azurewebsites.net'
 
         steps:
           # Instalar TypeScript y ts-node
@@ -476,7 +478,7 @@ stages:
           # Ejecutar
           - script: |
               cd $(Build.SourcesDirectory)/HotelCrudAngular
-              npx cypress run --config-file cypress.config.ts --env baseUrl=$(baseUrl)
+              npx cypress run --config-file cypress.config.ts --env baseUrl=$(baseUrl), apiUrl=$(apiUrl)
             displayName: 'Run Cypress E2E Tests'
 
           # Publicar
