@@ -5,7 +5,12 @@ describe('| Tests - Add Hotel |', () => {
     const testHotelName = 'Hotel Cypress Test Add';
 
     beforeEach(() => {
-        baseUrl = Cypress.env('baseUrl') || 'http://localhost:4200/';
+        baseUrl = Cypress.env('baseUrl');
+    
+        if (!baseUrl) {
+            baseUrl = 'http://localhost:4200/';
+        }
+
         cy.visit(baseUrl);
         cy.wait(500);
     });
