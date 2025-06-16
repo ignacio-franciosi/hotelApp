@@ -27,10 +27,10 @@ variables:
   frontImageTag: 'latest'
   container-cpu-front-qa: 1
   container-memory-front-qa: 1.5
+  AppServicePlanLinux: 'MiAppPlan'
   backContainerInstanceNameProd: 'hotel-back-prod'
   frontContainerInstanceNameProd: 'hotel-front-prod'
   WebAppApiNameContainersQA: 'hotel-back-qa'
-  AppServicePlanLinux: 'MiAppPlan'
   WebAppFrontNameContainersQA: 'hotel-front-qa'
   WebAppApiNameContainersProd: 'hotel-back-prod'
   WebAppFrontNameContainersProd: 'hotel-front-prod'
@@ -283,7 +283,7 @@ stages:
       inputs:
         azureSubscription: 'Azure subscription 1'
         appType: 'webApp'
-        WebAppName: 'hotelApp-prod'
+        WebAppName: 'hotelApp'
         package: '$(System.ArtifactsDirectory)/angular-drop'
         
 ## Deploy Back y Front en QA con pruebas de integración para ACI
