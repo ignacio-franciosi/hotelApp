@@ -4,11 +4,15 @@ describe('AddHotel - Validación de numero de habitaciones mayor a 0', () => {
     const testHotelName = 'Hotel Cypress Test Add Hotel with 0 rooms';
 
     beforeEach(() => {
-        baseUrl = Cypress.env('baseUrl') || 'http://localhost:4200/';
+        baseUrl = Cypress.env('baseUrl');
+    
+        if (!baseUrl) {
+            baseUrl = 'http://localhost:4200/';
+        }
+
         cy.visit(baseUrl);
         cy.wait(500);
     });
-
   it('debería mostrar un toast de error cuando el numero de habitaciones es 0', () => {
     cy.wait(1000);
     cy.contains('Add New Hotel').click();
