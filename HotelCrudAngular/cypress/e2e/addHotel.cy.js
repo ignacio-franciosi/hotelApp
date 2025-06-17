@@ -47,10 +47,11 @@ describe('| Tests - Add Hotel |', () => {
 
             // Volver al home
             cy.visit(baseUrl);
+            cy.wait(3000);
             
             // Esperar a que la página se recargue completamente
             cy.get('table', { timeout: 15000 }).should('be.visible');
-            cy.wait(2000);
+            cy.wait(5000);
 
             // Verificar que el nuevo hotel esté en la tabla
             // Usar un timeout más largo para Azure
