@@ -1,54 +1,56 @@
 describe('| Tests - Delete Hotel |', () => {
-    Cypress.on('uncaught:exception', (err, runnable) => {
-        return false;
-    });
+    Cypress.on('uncaught:exception', () => false);
 
     let baseUrl;
     let apiUrl;
+    const testHotelName = 'Hotel Cypress Test Delete';
 
     before(() => {
-        // Crear hotel directamente por API (puedes omitir si ya existe en BD)
-        apiUrl = Cypress.env('apiUrl');
-        if(!apiUrl){
-            apiUrl = 'http://localhost:7150'
-        }
-        cy.request('POST', `${apiUrl}/api/hotel/create`, {
-            name: 'Hotel Cypress Test Delete',
-            price: 100,
-            rooms: 5,
-            city: 'TestCity'
+        apiUrl = Cypress.env('apiUrl') || 'http://localhost:7150';
+
+        // Intentar crear el hotel, pero ignorar el error si ya existe
+        cy.request({
+            method: 'POST',
+            url: `${apiUrl}/api/hotel/create`,
+            body: {
+                name: testHotelName,
+                price: 100,
+                rooms: 5,
+                city: 'TestCity'
+            },
+            failOnStatusCode: false
+        }).then((response) => {
+            if (response.status === 400 && response.body.includes('ya está registrado')) {
+                cy.log('Hotel ya existe, continuando con la prueba...');
+            } else {
+                expect(response.status).to.eq(200); // o 201, según tu API
+            }
         });
     });
 
     beforeEach(() => {
-        baseUrl = Cypress.env('baseUrl');
-    
-        if (!baseUrl) {
-            baseUrl = 'http://localhost:4200/';
-        }
-
+        baseUrl = Cypress.env('baseUrl') || 'http://localhost:4200/';
         cy.visit(baseUrl);
         cy.wait(500);
     });
 
     it('Debería eliminar un hotel al hacer clic en el icono de eliminar', () => {
         cy.wait(1000);
-        // Contamos cuántos hoteles hay antes
-        cy.get('table tr').then((rowsBefore) => {
-            const rowCountBefore = rowsBefore.length;
 
-            // Seleccionamos el último ícono de tachito (eliminar)
-            cy.get('table tr').last().find('td').last().find('span.icon-btn').click();
+        // Verificar que el hotel exista y eliminarlo
+        cy.contains('td', testHotelName)
+            .should('exist')
+            .parent()
+            .within(() => {
+                cy.get('td').last().find('span.icon-btn').click();
+            });
 
-            // Esperamos a que el backend procese la eliminación
-            cy.wait(1000); 
+        // Esperar y recargar
+        cy.wait(1000);
+        cy.reload();
+        cy.wait(1000);
 
-            // Recargamos la página para reflejar los cambios
-            cy.reload();
-            cy.wait(1000);
-
-            // Verificamos que ahora haya una fila menos
-            cy.get('table tr').should('have.length.lessThan', rowCountBefore);
-        });
+        // Verificar que el hotel ya no esté
+        cy.contains('td', testHotelName).should('not.exist');
     });
 });
