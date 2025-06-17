@@ -331,7 +331,7 @@ stages:
                   --environment-variables ConnectionStrings__DefaultConnection="$(cnn_string_qa)" \
                   --restart-policy Always \
                   --cpu $(container-cpu-api-qa) \
-                  --os-type Windows \
+                  --os-type Linux \
                   --memory $(container-memory-api-qa)
 
 
@@ -369,7 +369,7 @@ stages:
                   --environment-variables API_URL="$(API_URL)" \
                   --restart-policy Always \
                   --cpu $(container-cpu-front-qa) \
-                  --os-type Windows \
+                  --os-type Linux \
                   --memory $(container-memory-front-qa)
 
       - job: IntegrationTesting
@@ -386,7 +386,7 @@ stages:
 
         - script: |
             cd $(Build.SourcesDirectory)/HotelCrudAngular
-            npx cypress run --config-file cypress.config.ts --env apiUrl=$(apiUrl),baseUrl=$(baseUrl)
+            npx cypress run --config-file cypress.config.ts --env "apiUrl=$(apiUrl),baseUrl=$(baseUrl)"
           displayName: 'Run Cypress E2E Tests'
 
         - task: PublishTestResults@2
@@ -484,7 +484,7 @@ stages:
           # Ejecutar
           - script: |
               cd $(Build.SourcesDirectory)/HotelCrudAngular
-              npx cypress run --config-file cypress.config.ts --env baseUrl=$(baseUrl), apiUrl=$(apiUrl)
+              npx cypress run --config-file cypress.config.ts --env "baseUrl=$(baseUrl),apiUrl=$(apiUrl)"
             displayName: 'Run Cypress E2E Tests'
 
           # Publicar
