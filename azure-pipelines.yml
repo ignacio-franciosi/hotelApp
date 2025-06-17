@@ -376,8 +376,8 @@ stages:
         displayName: 'Cypress'
         dependsOn: deploy_to_aci_qa
         variables:
-          baseUrl: 'https://$(frontContainerInstanceNameQA).brazilsouth.azurecontainer.io'
-          apiUrl: 'https://$(backContainerInstanceNameQA).brazilsouth.azurecontainer.io'
+          baseUrl: 'http://$(frontContainerInstanceNameQA).brazilsouth.azurecontainer.io'
+          apiUrl: 'http://$(backContainerInstanceNameQA).brazilsouth.azurecontainer.io'
         steps:
         - script: |
             cd $(Build.SourcesDirectory)/HotelCrudAngular
