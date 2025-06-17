@@ -34,7 +34,7 @@ describe('| Tests - Add Hotel |', () => {
             cy.get('input[name="name"]', { timeout: 10000 }).should('be.visible');
 
             // Llenar formulario
-            cy.get('input[name="name"]').clear().type(testHotelNameAdd);
+            cy.get('input[name="name"]').clear().type(testHotelName);
             cy.get('input[name="price"]').clear().type('200');
             cy.get('input[name="rooms"]').clear().type('15');
             cy.get('input[name="city"]').clear().type('Testopolis');
