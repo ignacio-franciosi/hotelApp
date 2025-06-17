@@ -10,9 +10,9 @@ describe('| Tests - Delete Hotel |', () => {
         // Crear hotel directamente por API (puedes omitir si ya existe en BD)
         apiUrl = Cypress.env('apiUrl');
         if(!apiUrl){
-            apiUrl = 'http://localhost:7150/'
+            apiUrl = 'http://localhost:7150'
         }
-        cy.request('POST', `${apiUrl}api/hotel/create`, {
+        cy.request('POST', `${apiUrl}/api/hotel/create`, {
             name: 'Hotel Cypress Test Delete',
             price: 100,
             rooms: 5,
