@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   //apiUrl: 'http://localhost:7150/api/Hotel'  // URL de la API para desarrollo
-  apiUrl: 'https://hotel-back-qa.brazilsouth.azurecontainer.io/api/Hotel'  // URL de la API para desarrollo
+  apiUrl: 'https://hotel-back-qa.azurewebsites.net/api/hotel'  // URL de la API para desarrollo
 };
 
 
