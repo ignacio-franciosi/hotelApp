@@ -391,6 +391,7 @@ stages:
 
         - task: PublishTestResults@2
           inputs:
+            testResultsFormat: 'JUnit'
             testResultsFiles: '$(Build.SourcesDirectory)/HotelCrudAngular/cypress/results/*.xml'
             testRunTitle: 'Cypress E2E Tests (QA)'
           displayName: 'Publish Cypress Test Results'
@@ -490,6 +491,7 @@ stages:
           # Publicar
           - task: PublishTestResults@2
             inputs:
+              testResultsFormat: 'JUnit'
               testResultsFiles: '$(Build.SourcesDirectory)/HotelCrudAngular/cypress/results/*.xml'
               testRunTitle: 'Cypress E2E Tests (QA)'
             displayName: 'Publicar resultados de Cypress'
