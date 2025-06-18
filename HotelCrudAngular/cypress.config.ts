@@ -5,11 +5,18 @@ export default defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
-    reporter: 'junit', // Configura el reporter a JUnit
+    reporter: 'junit',
     reporterOptions: {
-      mochaFile: 'cypress/results/results-[hash].xml', // Directorio y nombre de los archivos de resultados
-      toConsole: true, // Opcional: imprime los resultados en la consola
+      mochaFile: 'cypress/results/results-[hash].xml',
+      toConsole: true,
+      attachments: true,  // Para incluir screenshots
+      testCaseSwitchClassnameAndName: false,
     },
+    // Configuraciones adicionales útiles para CI/CD
+    video: true,  // Graba videos de los tests
+    screenshotOnRunFailure: true,  // Screenshots cuando fallan
+    videosFolder: 'cypress/videos',
+    screenshotsFolder: 'cypress/screenshots',
   },
   experimentalStudio: true,
 });
