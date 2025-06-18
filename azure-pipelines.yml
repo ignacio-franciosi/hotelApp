@@ -393,7 +393,8 @@ stages:
           inputs:
             testResultsFormat: 'JUnit'
             testResultsFiles: '$(Build.SourcesDirectory)/HotelCrudAngular/cypress/results/*.xml'
-            testRunTitle: 'Cypress E2E Tests (QA)'
+            testRunTitle: 'Cypress E2E Tests (QA) - Container Instances'
+            publishRunAttachments: true
           displayName: 'Publish Cypress Test Results'
 
 ## Deploy Back y Front en QA con pruebas de integración para Azure Web Apps con Soporte para contenedores
@@ -493,7 +494,8 @@ stages:
             inputs:
               testResultsFormat: 'JUnit'
               testResultsFiles: '$(Build.SourcesDirectory)/HotelCrudAngular/cypress/results/*.xml'
-              testRunTitle: 'Cypress E2E Tests (QA)'
+              testRunTitle: 'Cypress E2E Tests (QA) - App Services'
+              publishRunAttachments: true
             displayName: 'Publicar resultados de Cypress'
 
 ## Deploy Back y Front en PROD para Azure Web Apps
