@@ -581,6 +581,7 @@ stages:
                   --environment-variables ConnectionStrings__DefaultConnection="$(cnn_string_prod)" \
                   --restart-policy Always \
                   --cpu $(container-cpu-api-qa) \
+                  --os-type Linux \
                   --memory $(container-memory-api-qa)
 
           # FRONT
@@ -610,6 +611,7 @@ stages:
                   --ports 80 \
                   --environment-variables API_URL="$(PROD)" \
                   --restart-policy Always \
+                  --os-type Linux \
                   --cpu $(container-cpu-front-qa) \
                   --memory $(container-memory-front-qa)
 
