@@ -464,7 +464,7 @@ stages:
                   --container-registry-password $(az acr credential show --name $(acrName) --query "passwords[0].value" -o tsv)
                 # Establecer variables de entorno para el Front
                 az webapp config appsettings set --name $(WebAppFrontNameContainersQA) --resource-group $(ResourceGroupName) \
-                  --settings API_URL="https://$(WebAppApiNameContainersQA).azurewebsites.net" #API_URL2 
+                  --settings API_URL="$(API_URL2)" #API_URL2 
 
 # Cypress
       - job: IntegrationTesting
